@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>calculadora</title>
+   
+   <script>
+        function valor(num){
+            document.getElementById('resultado').value += num
+        }
+        function valorTotal(){
+            let exp = document.getElementById('resultado').value
+            if(exp){
+                document.getElementById('resultado').value = eval(exp)
+            }
+        }
+        function limpar(){
+            document.getElementById('resultado').value = ""
+        }
+        function apagar(){
+           let exp =  document.getElementById('resultado').value 
+           document.getElementById('resultado').value = exp.substring(0,exp.length-1)
+        }
+        
+    </script>
+    
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #principal{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+        }
+        #background{ 
+            background-image: linear-gradient(to right, #DC2424, #4A569D);
+            height:100vh;
+        }
+       
+        table td button{
+            width: 50px;
+            height: 50px;
+            font-size: 25px;
+            margin: 2px;
+            cursor: pointer;
+            background: #49528c;
+            color: white;
+            border: none;
+        }
+        table td button:hover{
+            transition-duration: 0.4s;
+            background-color: #e63838;
+        }
+        
+        #resultado{
+            width: 209px;
+            margin: 5px;
+            font-size: 25px;
+            padding: 4px;
+            border: none;
+            color: #b71d1d;
+        }
+       
+    </style>
+</head>
+<body>
+        <div id="background"></div>
+        
+        <div id="principal">
+            <input id="resultado" disabled>
+            <table>
+                <tr>
+                    <td><button onclick="limpar()">C</button></td>
+                    <td><button onclick="apagar()"><</button></td>
+                    <td><button onclick="valor('/')">/</button></td>
+                    <td><button onclick="valor('*')">X</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="valor(7)">7</button></td>
+                    <td><button onclick="valor(8)">8</button></td>
+                    <td><button onclick="valor(9)">9</button></td>
+                    <td><button onclick="valor('-')">-</button></td>
+                 </tr> 
+                 <tr>
+                    <td><button onclick="valor(4)">4</button></td>
+                    <td><button onclick="valor(5)">5</button></td>
+                    <td><button onclick="valor(6)">6</button></td>
+                    <td><button onclick="valor('+')">+</button></td>
+                </tr> 
+                 <tr>
+                    <td><button onclick="valor(1)">1</button></td>
+                    <td><button onclick="valor(2)">2</button></td>
+                    <td><button onclick="valor(3)">3</button></td>
+                    <td rowspan="5"><button style="height: 106px" onclick="valorTotal()">=</button></td>
+                </tr>     
+                <tr>
+                    <td colspan="2"><button style="width: 106px" onclick="valor(0)">0</button></td>
+                    <td><button onclick="valor('.')">.</button></td>
+                </tr>     
+                </table>
+        </div>
+</body>
+</html>
